@@ -3,7 +3,10 @@
  Column|Type|   Options   |
  mail (string,NOT NULL,unique: true)
  password (string、NOT NULL)
- name (string,NOT NULL,unique: true)
+ user_name (string,NOT NULL,unique: true)
+ last_name(string、NOT NULL)
+ first_name(string、NOT NULL)
+ date of birth(string、NOT NULL)
 
  #items
  item_name (string,NOT NULL)
