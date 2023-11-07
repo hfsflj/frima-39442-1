@@ -1,3 +1,4 @@
+
  #users
  Column|Type|   Options   |
  mail (string,NOT NULL,unique: true)
