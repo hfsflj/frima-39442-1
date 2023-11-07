@@ -30,3 +30,4 @@ prefectures(string,NOT NULL)
 municipalities(string,NOT NULL)
 building_name(string)
 telephone number(string,NOT NULL)
+
