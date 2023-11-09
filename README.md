@@ -13,8 +13,8 @@
   has_many :items
 
 # items
- | Column         | Type   | Options                                 |
- | -------------- | ------ | --------------------------------------- |
+ | Column         | Type   | Options                                  |
+ | -------------- | ------ | ---------------------------------------- |
  | item_name      | text    | NOT NULL                                |
  | item_detail    | text    | NOT NULL                                |
  | item_price     | integer | NOT NULL                                |
