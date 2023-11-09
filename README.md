@@ -1,5 +1,5 @@
 
-#users
+# users
 
  |Column|Type  |   Options   |
 
@@ -17,7 +17,7 @@
 
 
 
-#items
+# items
 
  |Column|Type  |   Options   |
 
@@ -36,7 +36,7 @@
 
 
  
-#credit_card 
+# credit_card 
 
  |Column|Type  |   Options   |
 
@@ -54,7 +54,7 @@
 
 
 
-＃purchase
+＃ purchase
 
 |Column|Type  |   Options   |
 
