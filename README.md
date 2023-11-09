@@ -10,7 +10,6 @@
  | date of birth | string | NOT NULL              |
 
 
-
 # items
  | Column         | Type   | Options  |
  | -------------- | ------ | -------- |
@@ -20,8 +19,6 @@
  | item_content   | string | NOT NULL |
  | delivery_price | string | NOT NULL |
  | delivery_date  | string | NOT NULL |
-
-
 
  
 # credit_card 
@@ -34,7 +31,6 @@
  | cvc           | string | NOT NULL |
  | name          | string | NOT NULL |
  | user          | string | NOT NULL |
-
 
 
 # purchase
