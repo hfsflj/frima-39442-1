@@ -1,6 +1,6 @@
 
  #users
- Column|Type  |   Options   |
+ |Column|Type  |   Options   |
  mail |string|NOT NULL,unique: true|
  password |string|NOT NULL|
  user_name |string|NOT NULL,unique: true|
@@ -18,7 +18,7 @@
  delivery_date |string|NOT NULL|
 
  #credit_card 
- Column|Type  |   Options   |
+ |Column|Type  |   Options   |
  credit_number |string|NOT NULL|
  year |string|NOT NULL|
  month |string|NOT NULL|
@@ -27,7 +27,7 @@
  user |string|NOT NULL|
 
 ＃purchase
-Column|Type  |   Options   |
+|Column|Type  |   Options   |
 post_code |string|NOT NULL|
 prefectures |string|NOT NULL|
 municipalities |string|NOT NULL|
