@@ -5,9 +5,6 @@
  | mail          | string | NOT NULL,unique: true |
  | password      | string | NOT NULL              |
  | user_name     | string | NOT NULL,unique: true |
-
- | last_name     | string | NOT NULL              |
- | first_name    | string | NOT NULL              |
  | date of birth | string | NOT NULL              |
 
 
