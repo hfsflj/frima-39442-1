@@ -9,7 +9,7 @@
  | first_name     | string | null: false               |
  | last_name_frigana     | string | null: false               |
  | first_name_frigana     | string | null: false               |
- | date      | string | null: false               |
+ | birthday      | date | null: false               |
 
   Association
   has_one :address 
@@ -26,7 +26,7 @@
  | delivery_price | string  | null: false                                |
  | delivery_date  | string  | null: false                                |
  | shipping area  | string  | null: false                                |
- | user        | references  | null: false,unique: true,foreign_key: true |
+ | user        | references  | null: false,foreign_key: true |
 
   Association
   belongs_to :user
@@ -38,12 +38,16 @@
 | prefectures      | string | null: false                                |
 | municipalities   | string | null: false                                |
 | street_address   | string | null: false                                |
-| building_name    | string | null: false                                |
+| building_name    | string |                                 |
 | telephone number | string | null: false                                |
 
+Association
+has_many :items
+
 # purchases
-| user        | references  | null: false,unique: true,foreign_key: true |
-| item         | references  | null: false,unique: true,foreign_key: true |
+| user        | references  | null: false,foreign_key: true |
+| item         | references  | null: false,foreign_key: true |
+
 
   Association
   belongs_to :user
