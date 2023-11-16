@@ -13,7 +13,7 @@
 
   Association
   has_many :items
-  has_one :purchases
+  has_one :purchase
 
 # items
  | Column         | Type   | Options                                  |
@@ -30,22 +30,22 @@
  
   Association
   belongs_to :user
-  has_one :purchases
+  has_one :purchase
  
 # shipping_addresses
 | Column           | Type   | Options                                 |
 | ---------------- | ------ | --------------------------------------- |
-| post_code        | integer | null: false                                |
+| post_code        | string | null: false                                |
 | prefectures_id      | integer | null: false                                |
 | municipalities   | string | null: false                                |
 | street_address   | string | null: false                                |
 | building_name    | string |                                 |
-| telephone_number | integer | null: false                                |
+| telephone_number | string | null: false                                |
 | purchase   | references  | null: false,foreign_key: true |
 
 
 Association
-  belongs_to :purchases
+  belongs_to :purchase
 
 # purchases
 | user        | references  | null: false,foreign_key: true |
@@ -54,6 +54,6 @@ Association
   Association
   belongs_to :user
   belongs_to :item
-  
+  has_one :shipping_address
 
 
