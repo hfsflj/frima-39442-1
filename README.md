@@ -13,7 +13,7 @@
 
   Association
   has_many :items
-  has_many :purchase
+  has_one :purchase
 
 # items
  | Column         | Type   | Options                                  |
