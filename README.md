@@ -12,8 +12,8 @@
  | birthday      | date | null: false               |
 
   Association
-  has_one :address 
   has_many :items
+  belongs_to :purchases
 
 # items
  | Column         | Type   | Options                                  |
@@ -22,14 +22,16 @@
  | category      | text    | null: false                                 |
  | item_detail    | text    | null: false                                |
  | item_price     | integer | null: false                                |
- | item_content   | string  | null: false                                |
- | delivery_price | string  | null: false                                |
- | delivery_date  | string  | null: false                                |
- | shipping area  | string  | null: false                                |
+ | item_content_id  | integer  | null: false                                |
+ | delivery_price_id | integer  | null: false                                |
+ | delivery_date_id  | integer | null: false                                |
+ | shipping_area_id  | integer | null: false                                |
  | user        | references  | null: false,foreign_key: true |
+ | purchase       | references  | null: false,foreign_key: true |
 
   Association
   belongs_to :user
+  belongs_to :purchases
  
 # shipping_addresses
 | Column           | Type   | Options                                 |
@@ -42,15 +44,15 @@
 | telephone number | string | null: false                                |
 
 Association
-has_many :items
+  belongs_to :purchases
 
 # purchases
 | user        | references  | null: false,foreign_key: true |
 | item         | references  | null: false,foreign_key: true |
 
-
   Association
   belongs_to :user
   belongs_to :item
+  belongs_to :purchases
 
 
