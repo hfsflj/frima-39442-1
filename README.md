@@ -13,7 +13,7 @@
 
   Association
   has_many :items
-  has_one :purchase
+  has_many :purchase
 
 # items
  | Column         | Type   | Options                                  |
@@ -36,8 +36,8 @@
 | Column           | Type   | Options                                 |
 | ---------------- | ------ | --------------------------------------- |
 | post_code        | string | null: false                                |
-| prefectures_id      | integer | null: false                                |
-| municipalities   | string | null: false                                |
+| shipping_area_id  | integer | null: false                                |
+| municipality   | string | null: false                                |
 | street_address   | string | null: false                                |
 | building_name    | string |                                 |
 | telephone_number | string | null: false                                |
