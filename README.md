@@ -13,13 +13,13 @@
 
   Association
   has_many :items
-  belongs_to :purchases
+  has_one :purchases
 
 # items
  | Column         | Type   | Options                                  |
  | -------------- | ------ | ---------------------------------------- |
  | item_name      | string    | null: false                                |
- | category      | text    | null: false                                 |
+ | category_id      | integer    | null: false                                 |
  | item_detail    | text    | null: false                                |
  | item_price     | integer | null: false                                |
  | item_content_id  | integer  | null: false                                |
@@ -27,21 +27,22 @@
  | delivery_date_id  | integer | null: false                                |
  | shipping_area_id  | integer | null: false                                |
  | user        | references  | null: false,foreign_key: true |
- | purchase       | references  | null: false,foreign_key: true |
-
+ 
   Association
   belongs_to :user
-  belongs_to :purchases
+  has_one :purchases
  
 # shipping_addresses
 | Column           | Type   | Options                                 |
 | ---------------- | ------ | --------------------------------------- |
-| post_code        | string | null: false                                |
-| prefectures      | string | null: false                                |
+| post_code        | integer | null: false                                |
+| prefectures_id      | integer | null: false                                |
 | municipalities   | string | null: false                                |
 | street_address   | string | null: false                                |
 | building_name    | string |                                 |
-| telephone number | string | null: false                                |
+| telephone_number | string | null: false                                |
+| purchase   | references  | null: false,foreign_key: true |
+
 
 Association
   belongs_to :purchases
@@ -53,6 +54,6 @@ Association
   Association
   belongs_to :user
   belongs_to :item
-  belongs_to :purchases
+  
 
 
