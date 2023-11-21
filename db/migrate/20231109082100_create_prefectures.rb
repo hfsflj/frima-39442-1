@@ -1,4 +1,4 @@
-class CreatePrefectures < ActiveHash::Base
+class CreatePrefectures < ActiveRecord::Migration[6.0]
   def change
     create_table :prefectures do |t|
 
