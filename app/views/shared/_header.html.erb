@@ -18,8 +18,9 @@
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう %>
       <% if user_signed_in? %>
         <!-- ログイン中の表示 -->
-         <%= link_to current_user.user_name, user_show_path(current_user), class: "user-nickname" %>
-   <%else %>
+         <span class="user-nickname"><%= current_user.user_name %></span>
+         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <%else %>
         <!-- ログアウト中の表示 -->
         <li><%= link_to 'ログイン', new_user_session_path %></li>
         <li><%= link_to '新規登録', new_user_registration_path %></li>
