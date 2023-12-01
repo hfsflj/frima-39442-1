@@ -1,16 +1,19 @@
+require 'rails_helper'
 
-rrequire 'rails_helper'
 RSpec.describe User, type: :model do
-  describe "ユーザー新規登録" do
-    it "nicknameが空だと登録できない" do
-      user = User.new(nickname: "", email: "kkk@gmail.com", password: "00000000", password_confirmation: "00000000")
+  describe 'ユーザー新規登録' do
+    it 'user_nameが空では登録できない' do
+      user = FactoryBot.build(:user)  # Userのインスタンス生成
+      user.user_name = ''  # user_nameの値を空にする
       user.valid?
-      expect(user.errors.full_messages).to include("Nickname can't be blank")
+      expect(user.errors.full_messages).to include "User name can't be blank"
     end
-    it "emailが空では登録できない" do
-      user = User.new(nickname: "abe", email: "", password: "00000000", password_confirmation: "00000000")
+
+    it 'emailが空では登録できない' do
+      user = FactoryBot.build(:user)  # Userのインスタンス生成
+      user.email = ''  # emailの値を空にする
       user.valid?
-      expect(user.errors.full_messages).to include("Email can't be blank")
+      expect(user.errors.full_messages).to include "Email can't be blank"
     end
   end
 end
