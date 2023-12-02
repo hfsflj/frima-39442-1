@@ -1,0 +1,2 @@
+class CreateAnotherTable < ApplicationRecord
+end

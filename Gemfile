@@ -62,3 +62,4 @@ end
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+gem 'activerecord', '6.0.6.1'
