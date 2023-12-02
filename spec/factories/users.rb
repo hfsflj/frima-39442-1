@@ -1,11 +1,12 @@
 FactoryBot.define do
   factory :user do
-    user_name { "www123" }
-    last_name { "佐藤" }
-    first_name { "京子" }
-    last_name_frigana { "サトウ" }
-    first_name_frigana { "キョウコ" }
-    birthday { "1995/12/4" }
-    password { "www123" } # パスワードは必要に応じて変更してください
+    email { Faker::Internet.email }
+    user_name { Faker::Internet.user_name }
+    last_name { Faker::Japanese::Name.last_name }
+    first_name { Faker::Japanese::Name.first_name }
+    last_name_frigana { Faker::Japanese::Name.last_name.yomi }
+    first_name_frigana { Faker::Japanese::Name.first_name.yomi }
+    birthday { Faker::Date.birthday(min_age: 18, max_age: 65) }
+    password { Faker::Internet.password }
   end
 end
