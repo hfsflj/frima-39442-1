@@ -1,4 +1,4 @@
-class Prefecture < ApplicationRecord
+class Shipping < ApplicationRecord
   self.data = [
     {id: 1, name: '北海道'}, 
     {id: 2, name: '青森県'}, 
@@ -48,8 +48,7 @@ class Prefecture < ApplicationRecord
     {id: 46, name: '鹿児島県'}, 
     {id: 47, name: '沖縄県'}
 ]
-belongs_to :user
-belongs_to :item
+include ActiveHash::Associations
+  has_many :items
 
-validates :item_id, uniqueness: true
 end

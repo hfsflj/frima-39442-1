@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         validates :user_name, presence: true
-         validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "は全角漢字・ひらがな・カタカナで入力してください" }
-         validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "は全角漢字・ひらがな・カタカナで入力してください" }
+  has_one :address
+  has_many :items
+  has_many :purchases
 
          validates :last_name_frigana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "can't be blank" }
          validates :first_name_frigana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "can't be blank" }
