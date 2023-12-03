@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
     context 'ユーザ登録ができる時' do
       it '正しい情報が入力されていれば登録できること' do
+        @user = FactoryBot.build(:user)
         expect(@user).to be_valid
       end
     end
@@ -67,7 +68,7 @@ RSpec.describe User, type: :model do
       end
 
       it '全角だと登録できないこと' do
-        @user.password = 'パスワード１a'
+        @user.password = 'パスワード1a'
         @user.valid?
         expect(@user.errors.full_messages).to include 'Password must contain at least one numeric character'
       end
@@ -78,23 +79,43 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include "User name can't be blank"
       end
+   
 
       # ユーザー名フリガナに関して
       it '空では登録できないこと' do
         @user.last_name_frigana = ''
-        @user.first_name_frigana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Last name frigana can't be blank"
-        expect(@user.errors.full_messages).to include "First name frigana can't be blank"
       end
 
-      it 'カタカナ以外の文字（ひらがなや漢字）が含まれている場合は登録できないこと' do
-        @user.last_name_frigana = ''
-        @user.first_name_frigana = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include "Last name frigana can't be blank"
-        expect(@user.errors.full_messages).to include "First name frigana can't be blank"
+      context 'フリガナに半角文字が含まれている場合' do
+        it '半角文字が含まれていると登録できないこと' do
+          @user.last_name_frigana = 'ﾀﾛｳ'
+          @user.valid?
+          expect(@user.errors.full_messages).to include  "Last name frigana can't be blank"
+        end
+      
+        it '半角文字が含まれていると登録できないこと' do
+          @user.first_name_frigana = 'ﾊﾅｺ'
+          @user.valid?
+          expect(@user.errors.full_messages).to include  "First name frigana can't be blank"
+        end
       end
+
+      context 'カタカナ以外の文字が含まれている場合' do
+        it 'カタカナ以外の文字が含まれていると登録できないこと' do
+          @user.last_name_frigana = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include "Last name frigana can't be blank"
+        end
+
+        it 'カタカナ以外の文字が含まれていると登録できないこと' do
+          @user.first_name_frigana = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include "First name frigana can't be blank"
+        end
+      end
+
 
       # birthdayに関して
       it '空だと登録できないこと' do
@@ -102,6 +123,8 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include "Birthday can't be blank"
       end
+
+  
     end
   end
 end

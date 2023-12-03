@@ -15,8 +15,7 @@
       <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
     </ul>
    <ul class='lists-right'>
-      <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう %>
-      <% if user_signed_in? %>
+            <% if user_signed_in? %>
         <!-- ログイン中の表示 -->
          <span class="user-nickname"><%= current_user.user_name %></span>
          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
