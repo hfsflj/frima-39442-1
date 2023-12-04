@@ -10,11 +10,11 @@ class User < ApplicationRecord
          validates :user_name, presence: { message: "can't be blank" }
 
 
-         validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ヶ]+\z/, message: "can't be blank" }
-         validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ヶ]+\z/, message: "can't be blank" }
+         validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "can't be blank" }
+         validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "can't be blank" }
        
-         validates :last_name_frigana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "can't be blank" }
-         validates :first_name_frigana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "can't be blank" }
+         validates :last_name_frigana, presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: "can't be blank" }
+         validates :first_name_frigana, presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: "can't be blank" }
 
 
          validates :birthday, presence: true
