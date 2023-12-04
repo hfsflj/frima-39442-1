@@ -1,10 +1,9 @@
 class Item < ApplicationRecord
   
-  belongs_to :user
+  #belongs_to :user
   has_many :purchases
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category
+  
 
   validates :item_name, presence: true
   validates :item_detail, presence: true
@@ -12,7 +11,6 @@ class Item < ApplicationRecord
   validates :item_content, presence: true
   validates :delivery_price, presence: true
   validates :delivery_date, presence: true
-  validates :shipping area, presence: true
-  validates :category, presence: true
+  validates :shipping_area, presence: true
 
 end
