@@ -28,4 +28,8 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:item_name, :item_detail, :category_id, :item_price, :item_condition_id, :delivery_price_id, :delivery_date_id, :shipping_area_id, :item_image)
   end
+
+  def validate_item_image
+    errors.add(:item_image, 'must be attached') unless item_image.attached?
+  end
 end
