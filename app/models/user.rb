@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
 
          validates :birthday, presence: true
-         validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: "must contain at least one numeric character" }
-         
+         validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "must contain at least one numeric character" }
+    
          
 end
