@@ -10,10 +10,7 @@
 
 
   
-      <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
       <%= render 'shared/error_messages', model: f.object %>
-      <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-
       <%# 商品画像 %>
       <div class="img-upload">
         <div class="weight-bold-text">
@@ -92,46 +89,34 @@
       <%# /配送について %>
 
       <%# 販売価格 %>
-<div class="sell-price">
-  <div class="weight-bold-text question-text">
-    <span>販売価格<br>(¥300〜9,999,999)</span>
-    <a class="question" href="#">?</a>
-  </div>
-  <div class="price-content">
-    <div class="price-text">
-      <span>価格</span>
-      <span class="indispensable">必須</span>
+    <div class="sell-price">
+      <div class="weight-bold-text question-text">
+        <span>販売価格<br>(¥300〜9,999,999)</span>
+        <a class="question" href="#">?</a>
+      </div>
+      <div>
+        <div class="price-content">
+          <div class="price-text">
+            <span>価格</span>
+            <span class="indispensable">必須</span>
+          </div>
+          <span class="sell-yen">¥</span>
+          <%= f.text_field :item_price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+        </div>
+        <div class="price-content">
+          <span>販売手数料 (10%)</span>
+          <span>
+            <span id='add-tax-price'></span>円
+          </span>
+        </div>
+        <div class="price-content">
+          <span>販売利益</span>
+          <span>
+            <span id='profit'></span>円
+          </span>
+        </div>
+      </div>
     </div>
-    <span class="sell-yen">¥</span>
-    <%= f.text_field :item_price, class: "price-input", id: "item-price", placeholder: "例）300", oninput: "calculateFees(this.value)" %>
-  </div>
-  <div class="price-content">
-    <span>販売手数料 (10%)</span>
-    <span>
-      <span id='add-tax-price'></span>円
-    </span>
-  </div>
-  <div class="price-content">
-    <span>販売利益</span>
-    <span>
-      <span id='profit'></span>円
-    </span>
-  </div>
-</div>
-
-<script>
-  function calculateFees(price) {
-    // 入力された価格を取得
-    var itemPrice = parseFloat(price);
-
-    // 販売手数料を計算（10%）
-    var fee = itemPrice * 0.1;
-
-    // 販売手数料と利益を表示する要素に結果をセット
-    document.getElementById('add-tax-price').textContent = fee.toFixed(2);
-    document.getElementById('profit').textContent = (itemPrice - fee).toFixed(2);
-  }
-</script>
 
 <%# /販売価格 %>
 

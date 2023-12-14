@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :users, :show
   resources :items, only: [:index, :show, :new, :create]
   root 'items#index'
+  get '/new_item_path', to: 'items#new'
+
 end
