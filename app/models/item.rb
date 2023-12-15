@@ -14,7 +14,6 @@ class Item < ApplicationRecord
   validates :delivery_date_id, presence: { message: "can't be blank" }, numericality: { other_than: 1, message: 'must be other than ---' }, exclusion: { in: [nil], message: "can't be blank" }
   validates :shipping_area_id, presence: { message: "can't be blank" }, numericality: { other_than: 1, message: 'must be other than ---' }, exclusion: { in: [nil], message: "can't be blank" }
   validates :item_image, presence: { message: "can't be blank" }
-  validates :user, presence: { message: "can't be blank" }
 
   has_one_attached :item_image
 end

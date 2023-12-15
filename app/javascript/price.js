@@ -1,5 +1,3 @@
-console.log("ok");
-
 document.addEventListener('DOMContentLoaded', function() {
   // 販売価格を入力する箇所の定義
 const inputPriceElement = document.getElementById('item-price');
