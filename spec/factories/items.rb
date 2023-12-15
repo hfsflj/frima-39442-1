@@ -8,7 +8,9 @@ FactoryBot.define do
     delivery_price_id {8000}
     delivery_date_id {2}
     shipping_area_id {2}
-    item_image{test_image.jpg}
+    after(:build) do |item|
+      item.item_image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'test_image.jpg')), filename: 'test_image.jpg', content_type: 'image/jpg')
+    end
     association :user
   end
 end
