@@ -8,9 +8,7 @@ FactoryBot.define do
     first_name_frigana { Faker::Japanese::Name.first_name.yomi }
     birthday { Faker::Date.birthday(min_age: 18, max_age: 65) }
 
-    # パスワード関連の設定
     password { '1a' + Faker::Internet.password(min_length: 6) }
     password_confirmation { password }
-
   end
 end

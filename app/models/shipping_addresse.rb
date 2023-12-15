@@ -8,4 +8,5 @@ class ShippingAddresse < ApplicationRecord
   t.string :telephone_number, null: false
   t.references :purchase, null: false,unique: true
 
+  belongs_to :purchase
 end
