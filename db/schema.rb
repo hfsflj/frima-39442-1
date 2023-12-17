@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2023_12_05_084324) do
     t.integer "delivery_date_id", null: false
     t.integer "shipping_area_id", null: false
     t.bigint "user_id", null: false
+    t.boolean "sold", default: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 

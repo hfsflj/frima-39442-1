@@ -10,6 +10,7 @@ class Items < ActiveRecord::Migration[6.0]
       t.integer :delivery_date_id, null: false
       t.integer :shipping_area_id, null: false
       t.references :user, null: false,foreign_key: true
+      t.boolean :sold, default: false
     end
   end
 
