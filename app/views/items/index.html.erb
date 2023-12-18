@@ -130,11 +130,11 @@
         <%= link_to "#" do %>
           <div class='item-img-content'>
             <%= image_tag item.item_image, class: "item-img" %>
-            <% if item.sold_out? %>
-              <div class='sold-out'>
+            <%# <% if item.sold_out? %>
+              <%# <div class='sold-out'>
                 <span>Sold Out!!</span>
-              </div>
-            <% end %>
+              </div> %>
+            <%#  end %> 
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
