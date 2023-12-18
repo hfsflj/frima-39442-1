@@ -8,6 +8,7 @@ const inputPriceElement = document.getElementById('item-price');
   const profitElement = document.getElementById('profit');
 
   // 入力された価格が変更されたときのイベントリスナー
+  
   inputPriceElement.addEventListener('input', function() {
     const inputPrice = inputPriceElement.value;
 
