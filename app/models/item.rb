@@ -5,7 +5,6 @@ class Item < ApplicationRecord
   belongs_to :delivery_price, class_name: 'DeliveryPrice', foreign_key: 'delivery_price_id'
   belongs_to :delivery_date, class_name: 'DeliveryDate', foreign_key: 'delivery_date_id'
   belongs_to :shipping_area, class_name: 'ShippingArea', foreign_key: 'shipping_area_id'
-
   validates :item_name, presence: { message: "can't be blank" }
   validates :item_detail, presence: { message: "can't be blank" }
   validates :item_price, presence: { message: "can't be blank" }, numericality: { only_integer: true, greater_than: 300, less_than: 10_000_000 }, format: { with: /\A\d+\z/, message: "must be a number" }
@@ -14,6 +13,10 @@ class Item < ApplicationRecord
   validates :delivery_date_id, presence: { message: "can't be blank" }, numericality: { other_than: 1, message: 'must be other than ---' }, exclusion: { in: [nil], message: "can't be blank" }
   validates :shipping_area_id, presence: { message: "can't be blank" }, numericality: { other_than: 1, message: 'must be other than ---' }, exclusion: { in: [nil], message: "can't be blank" }
   validates :item_image, presence: { message: "can't be blank" }
-
+  def sold_out?
+    self.sold  
+  end
+  
+  belongs_to :category
   has_one_attached :item_image
 end

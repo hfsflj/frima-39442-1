@@ -8,20 +8,24 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-  
+
   def create
     @item = Item.new(item_params)
     @item.user = current_user
-  
+
     @item.item_image.attach(params[:item][:item_image]) if params[:item][:item_image]
-  
+
     if @item.save
       redirect_to root_path, notice: 'Item was successfully created'
     else
       render :new
     end
   end
-  
+
+  def show
+    @item = Item.find_by(id: params[:id])
+    redirect_to root_path, alert: "商品が見つかりません。" if @item.nil?
+  end
 
   private
 
