@@ -13,8 +13,8 @@
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-   
-    </div>
+      <%end%>
+     </div> 
     <div class="item-price-box">
       <span class="item-price">
         ¥  <%= number_with_delimiter(@item.item_price) %>
@@ -23,9 +23,9 @@
         <%= @item.delivery_price.name %>
       </span>
     </div>
-    <%end%>
+    
 
-    <div class="item-edit-delete-buttons">
+    
     <% if user_signed_in? %>
     <% if current_user.id == @item.user_id %>
     <% unless @item.sold_out? %>
@@ -33,14 +33,14 @@
     <p class="or-text">or</p>
     <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
     <%end%>
-  <% else %>
+    <% else %>
 
     
     <% unless @item.sold_out? %>
     <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <%end%>
-  <% end %>
-<% end %>
+    <% end %>
+    <% end %>
     
 
 
