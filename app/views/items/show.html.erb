@@ -1,6 +1,4 @@
 <%= render "shared/header" %>
-<h1>Items#show</h1>
-<p>Replace this with your actual content for the show page.</p>
 
 <%# 商品の概要 %>
 <div class="item-show">
@@ -27,7 +25,7 @@
     </div>
     <%end%>
 
-    
+    <div class="item-edit-delete-buttons">
     <% if user_signed_in? %>
     <% if current_user.id == @item.user_id %>
     <% unless @item.sold_out? %>
