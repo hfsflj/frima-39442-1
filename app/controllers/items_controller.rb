@@ -24,15 +24,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find_by(id: params[:id])
     redirect_to root_path, alert: "商品が見つかりません。" if @item.nil?
   end
 
   def edit
-    @item = Item.find(params[:id])
       redirect_to root_path and return unless current_user.id == @item.user_id
     
-      if @item.sold_out?
+      #if @item.sold_out?
         redirect_to root_path and return
     end
   end
