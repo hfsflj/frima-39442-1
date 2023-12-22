@@ -30,9 +30,10 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    redirect_to root_path unless current_user.id == @item.user_id
-    if current_user.id != @item.user_id || @item.sold_out?
-      redirect_to root_path
+      redirect_to root_path and return unless current_user.id == @item.user_id
+    
+      if @item.sold_out?
+        redirect_to root_path and return
     end
   end
 
