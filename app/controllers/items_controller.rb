@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @item = Item.order(created_at: :desc)
@@ -23,11 +24,31 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find_by(id: params[:id])
     redirect_to root_path, alert: "商品が見つかりません。" if @item.nil?
   end
 
+  def edit
+      redirect_to root_path and return unless current_user.id == @item.user_id
+    
+      #if @item.sold_out?
+        redirect_to root_path and return
+    end
+  end
+
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item), notice: '商品の情報が更新されました'
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(
