@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @item = Item.order(created_at: :desc)
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
     
       #if @item.sold_out?
         redirect_to root_path and return
-    end
+    #end
   end
 
 
@@ -44,10 +44,24 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    if current_user.id == @item.user_id
+      if @item.destroy
+        redirect_to root_path, notice: '商品を削除しました'
+      else
+        redirect_to root_path, alert: '商品の削除に失敗しました'
+      end
+    else
+      redirect_to root_path, alert: '商品の削除に失敗しました'
+    end
+  end
 
+  private
+  
   def set_item
     @item = Item.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "指定された商品は存在しません。"
   end
 
   def item_params
