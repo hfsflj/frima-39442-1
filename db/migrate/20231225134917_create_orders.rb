@@ -1,6 +1,6 @@
-class Items < ActiveRecord::Migration[6.0]
+class CreateOrders < ActiveRecord::Migration[6.0]
   def change
-    create_table :items do |t|
+    create_table :orders do |t|
       t.references :user, null: false, foreign_key: true
       t.references :item, null: false, foreign_key: true
       t.string :post_code, null: false
@@ -9,10 +9,7 @@ class Items < ActiveRecord::Migration[6.0]
       t.string :street_address, null: false
       t.string :building_name
       t.string :telephone_number, null: false
-
+      t.timestamps
     end
   end
-
-
- 
 end

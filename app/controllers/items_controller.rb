@@ -30,9 +30,9 @@ class ItemsController < ApplicationController
   def edit
       redirect_to root_path and return unless current_user.id == @item.user_id
     
-      #if @item.sold_out?
+      if @item.sold_out?
         redirect_to root_path and return
-    #end
+      end
   end
 
 
@@ -48,13 +48,22 @@ class ItemsController < ApplicationController
     if current_user.id == @item.user_id
       if @item.destroy
         redirect_to root_path, notice: '商品を削除しました'
-      else
-        redirect_to root_path, alert: '商品の削除に失敗しました'
+        else
+          redirect_to root_path, alert: '商品の削除に失敗しました'
       end
     else
       redirect_to root_path, alert: '商品の削除に失敗しました'
     end
   end
+
+    def purchase
+      if params[:item_id]
+      @item = Item.find(params[:id])
+    else
+      redirect_to root_path, alert: "アイテムが指定されていません。"
+      end
+    end
+  
 
   private
   
