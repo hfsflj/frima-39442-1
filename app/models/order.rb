@@ -11,11 +11,8 @@ class Order
   validates :token, presence: true
 
   def save
-    return false unless valid?
-
-    ActiveRecord::Base.transaction do
-      order_record = OrderRecord.create(user_id: user_id, item_id: item_id)
-      ShippingAddress.create(order_id: order_record.id, post_code: post_code, shipping_area_id: shipping_area_id, municipality: municipality, street_address: street_address, building_name: building_name, telephone_number: telephone_number)
+      purchase = Purchase.create(user_id: user_id, item_id: item_id)
+      ShippingAddress.create(purchase_id: purchase.id, post_code: post_code, shipping_area_id: shipping_area_id, municipality: municipality, street_address: street_address, building_name: building_name, telephone_number: telephone_number)
     end
-  end
 end
+#住所と購入記録にデータを保存する・アクセス権限を書く・バリデーションを設定し内容を確認

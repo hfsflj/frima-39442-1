@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @item = Item.order(created_at: :desc)
+    @items = Item.order(created_at: :desc)
   end
 
   def new
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
   def edit
       redirect_to root_path and return unless current_user.id == @item.user_id
     
-      if @item.sold_out?
+      if @item.purchase
         redirect_to root_path and return
       end
   end

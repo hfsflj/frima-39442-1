@@ -124,14 +124,14 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle">新規投稿商品</div>
     <ul class='item-lists'>
-    <% if @item.exists? %>
-    <% @item.each do |item| %>
+    <% if @items.exists? %>
+    <% @items.each do |item| %>
       <li class='list'>
         <%= link_to item_path(item) do %>
           <div class='item-img-content'>
           <% if item.item_image.attached? %>
             <%= image_tag item.item_image, class: "item-img"  %>
-            <% if item.sold_out? %>
+            <% if item.purchase %>
                 <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div> 
