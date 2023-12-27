@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
     before do
-      user = FactoryBot.build(:user)
-      item = FactoryBot.build(:item)
-      @order = FactoryBot.build(:order, user_id: user.id, item_id: item.id, post_code: '123-4567', shipping_area_id: 1, municipality: '横浜市緑区', street_address: '青山1-1-1', telephone_number: '09012345678', token: 'tok_abcdefghijk00000000000000000')
+      @order = FactoryBot.build(:order)
     end
   
   describe '商品購入' do
@@ -39,7 +37,7 @@ RSpec.describe Order, type: :model do
       end
 
       it '都道府県が空だと購入できない' do
-        @order.shipping_area_id = nil
+        @order.shipping_area_id = 1
         @order.valid?
         expect(@order.errors.full_messages).to include("Shipping area can't be blank")
       end
@@ -68,6 +66,31 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Telephone number is invalid")
       end
+
+      it '電話番号が9桁以下だと購入できない' do
+        @order.telephone_number = '123456789'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Telephone number is invalid")
+      end
+
+      it '電話番号が12桁以上だと購入できない' do
+        @order.telephone_number = '123456789012'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Telephone number is invalid")
+      end
+
+      it 'user_idがないと購入できない' do
+        @order.user_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idがないと購入できない' do
+        @order.item_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
+      end
+
 
     end
   end
