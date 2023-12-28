@@ -6,7 +6,5 @@ FactoryBot.define do
     municipality {"横浜市緑区"}
     street_address {"青山1-1-1"}
     telephone_number {"09012345678"}
-    user_id {create(:user).id}
-    item_id {create(:item).id}
   end
 end

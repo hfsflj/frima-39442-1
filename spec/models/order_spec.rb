@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
     before do
-      @order = FactoryBot.build(:order)
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @order = FactoryBot.build(:order,user_id: user.id, item_id: item.id, )
     end
   
   describe '商品購入' do
@@ -36,11 +38,12 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Post code is invalid")
       end
 
-      it '都道府県が空だと購入できない' do
+      it '都道府県が{---}だと購入できない' do
         @order.shipping_area_id = 1
         @order.valid?
-        expect(@order.errors.full_messages).to include("Shipping area can't be blank")
+        expect(@order.errors.full_messages).to include("Shipping area must be other than ---")
       end
+      
 
       it '市区町村が空だと購入できない' do
         @order.municipality = ''
@@ -91,6 +94,11 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Item can't be blank")
       end
 
+      it 'tokenが空では購入できない' do
+        @order.token = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
 
     end
   end
