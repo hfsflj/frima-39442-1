@@ -56,14 +56,6 @@ class ItemsController < ApplicationController
     end
   end
 
-    def purchase
-      if params[:item_id]
-      @item = Item.find(params[:id])
-    else
-      redirect_to root_path, alert: "アイテムが指定されていません。"
-      end
-    end
-  
 
   private
   
