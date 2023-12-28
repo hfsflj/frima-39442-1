@@ -18,6 +18,6 @@ class User < ApplicationRecord
 
          validates :birthday, presence: true
          validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "must contain at least one numeric character" }
-    
+         belongs_to_active_hash :prefecture
          
 end
